@@ -12,6 +12,14 @@
     "ejs": "~2.3.3",
     "express": "~4.13.1",
     "morgan": "~1.6.1",
-    "serve-favicon": "~2.3.0"
+    "mongoose": "~4",
+    "express-session": "^1.12.1",
+    "serve-favicon": "~2.3.0",
+    "passport":"~0.2.0",
+    "nodemailer": "~0.7",
+    "passport-local":"~1.0.0",
+    "bcrypt-nodejs":"latest",
+    "kerberos":"~0.0",
+    "connect-flash":"~0.1.1"
   }
 }

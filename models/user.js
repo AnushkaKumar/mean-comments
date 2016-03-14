@@ -4,4 +4,15 @@ var UserSchema=new mongoose.Schema(
     	password:{type:String},
         name:{type:String}
 	});
+UserSchema.methods.generateHash = function(password) {
+    return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
+};
+
+// checking if password is valid
+UserSchema.methods.validPassword = function(password) {
+	console.log(password)
+	console.log(this)
+	
+    return bcrypt.compareSync(password, this.password);
+};
 module.exports=mongoose.model('User',UserSchema);

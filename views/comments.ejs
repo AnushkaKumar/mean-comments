@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Land.io UI Kit | Codrops</title>
+    <title>Comments.@  |  Rentomojo</title>
     <meta name="description" content="A free HTML template and UI Kit built on Bootstrap" />
     <meta name="keywords" content="free html template, bootstrap, ui kit, sass" />
     <meta name="author" content="Peter Finlan and Taty Grassini Codrops" />
@@ -33,7 +33,7 @@
 
   <body class="bg-faded p-t-2">
     <div class="container">
-      <h3 class="p-y-1 text-xs-center">Comment.@ <strong>Rentomojo</strong></h3>
+      <h3 class="p-y-1 text-xs-center">Comments.@ <strong>Rentomojo</strong></h3>
     </div>
 
     <!-- WHITE navigation
@@ -45,17 +45,18 @@
       <div class="row">
         <div class="col-md-12 col-xl-12">
 
+          <form method="post" action="/comments">
           <!-- Forms
           ================================================== -->
           <div class="form-group has-icon-left form-control-name">
             <label class="sr-only" for="inputName">Comment</label>
-            <textarea type="text" class="form-control form-control-lg" id="inputName" placeholder="Comment Here"></textarea>
+            <textarea name="info" type="text" class="form-control form-control-lg" id="inputName" placeholder="Comment Here"></textarea>
           </div>
           <!-- Buttons
           ================================================== -->
           <button type="submit" class="btn btn-primary-outline btn-block">Comment</button>
           <hr class="invisible">
- 
+          </form>
         </div>
 
 
@@ -65,27 +66,27 @@
 
           <!-- User Card
           ================================================== -->
-
+        <%  for (var i =0; i<comments.length; ++i){  %>
           <div class="card card-inverse card-social text-xs-center">
             <div class="card-block has-gradient">
-              <h5 class="card-title">Joel Fisher</h5>
-              <h6 class="card-subtitle">hey@joelfisher.com</h6>
-              <p class="card-subtitle">Blah Blah Blah.. this is a sample comment</p>
+              <h5 class="card-title"><%= comments[i].user.name %></h5>
+              <h6 class="card-subtitle"><%= comments[i].user.email %></h6>
+              <p class="card-subtitle"><%= comments[i].info %></p>
             </div>
             <div class="card-block container">
               <div class="row">
                 <div class="col-md-6 card-stat">
-                  <a href ="#"><h4>149 <small class="text-uppercase">Upvotes</small></h4></a>
+                  <a href ="/comments/upvote?id=<%=comments[i]._id%>"><h4><%= comments[i].upvote.length %><small class="text-uppercase">Upvotes</small></h4></a>
                 </div>
                 <div class="col-md-6 card-stat">
-                  <a href="#"><h4>1,763 <small class="text-uppercase">Downvotes</small></h4></a>
+                  <a href="/comments/downvote?id=<%=comments[i]._id %>"><h4><%= comments[i].downvote.length %><small class="text-uppercase">Downvotes</small></h4></a>
                 </div>
               </div>
             </div>
           </div>
 
           <hr class="invisible">
-
+        <%  }  %>
         </div>
       </div>
     </div>
